@@ -4,12 +4,12 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Noah.Attacks
 {
     public class HTTPAttackPlugin : IAttack
     {
-        public Thread AttackThread { get; private set; }
         public string AttackName { get; private set; }
 
         private string message;
@@ -25,12 +25,11 @@ namespace Noah.Attacks
             message = sb.ToString();
             this.state = state;
             ip = host;
-            AttackThread = new Thread(() => attack());
         }
 
         public void BeginAttack()
         {
-            AttackThread.Start();
+            new Task(() => attack()).Start();
         }
 
         private void attack()

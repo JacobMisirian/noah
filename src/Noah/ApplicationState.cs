@@ -9,6 +9,7 @@ namespace Noah
         public States State { get; set; }
         public int Delay { get; set; }
         public int TimeAllocated { get; set; }
+        public int Threads { get; set; }
         public bool ShowTime { get; set; }
         public Stopwatch StopWatch { get; private set; }
 
@@ -17,6 +18,7 @@ namespace Noah
             State = States.Ready;
             Delay = 0;
             TimeAllocated = Timeout.Infinite;
+            Threads = 1;
             ShowTime = false;
             StopWatch = new Stopwatch();
             StopWatch.Start();

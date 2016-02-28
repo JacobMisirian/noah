@@ -38,6 +38,7 @@
     <Compile Include="Attacks\IAttack.cs" />
     <Compile Include="Attacks\HTTPAttackPlugin.cs" />
     <Compile Include="ApplicationState.cs" />
+    <Compile Include="ArgumentParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
