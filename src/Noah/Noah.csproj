@@ -36,9 +36,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Attacks\IAttack.cs" />
-    <Compile Include="Attacks\HTTPAttackPlugin.cs" />
     <Compile Include="ApplicationState.cs" />
     <Compile Include="ArgumentParser.cs" />
+    <Compile Include="Attacks\HTTPAttack.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

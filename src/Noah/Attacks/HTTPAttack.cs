@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Noah.Attacks
 {
-    public class HTTPAttackPlugin : IAttack
+    public class HTTPAttack : IAttack
     {
         public string AttackName { get; private set; }
 
@@ -16,7 +16,7 @@ namespace Noah.Attacks
         private ApplicationState state;
         private string ip;
 
-        public HTTPAttackPlugin(string host, ApplicationState state)
+        public HTTPAttack(string host, ApplicationState state)
         {
             StringBuilder sb = new StringBuilder("GET ");
             sb.Append(host);
@@ -43,9 +43,6 @@ namespace Noah.Attacks
                 output.WriteLine(message);
                 output.Flush();
                 Thread.Sleep(state.Delay);
-
-                if (state.StopWatch.ElapsedMilliseconds % 1000 == 0 && state.ShowTime)
-                    Console.WriteLine(state.StopWatch.Elapsed.Seconds);
             }
         }
     }

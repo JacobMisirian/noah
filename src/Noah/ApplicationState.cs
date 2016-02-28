@@ -22,6 +22,8 @@ namespace Noah
             ShowTime = false;
             StopWatch = new Stopwatch();
             StopWatch.Start();
+
+            new Thread(() => checkState()).Start();
         }
 
         private void checkState()
@@ -30,7 +32,11 @@ namespace Noah
             {
                 if (State == States.Done)
                     OnAttackCompleted(new AttackCompletedEventArgs { StopWatch = StopWatch });
-                Thread.Sleep(100);
+                if (StopWatch.ElapsedMilliseconds % 1000 == 0 && ShowTime && State == States.Attacking)
+                {
+                    Console.WriteLine(StopWatch.Elapsed.Seconds);
+                    Thread.Sleep(10);
+                }
             }
         }
 

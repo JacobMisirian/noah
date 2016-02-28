@@ -7,15 +7,17 @@ namespace Noah
 {
 	class MainClass
 	{
+        private static ApplicationState state;
 		public static void Main(string[] args)
         {	
-            ApplicationState state = new ArgumentParser(args).Parse();
-			IAttack attack = null;
+            state = new ArgumentParser(args).Parse();
+            state.AttackCompleted += state_OnAttackCompleted;
+            IAttack attack = null;
 
 			switch (args[0].ToLower())
 			{
 				case "tcp":
-					attack = new HTTPAttackPlugin(args[1], state);
+					attack = new HTTPAttack(args[1], state);
 					break;
 			}
 
@@ -23,11 +25,13 @@ namespace Noah
                 attack.BeginAttack();
 			Thread.Sleep(state.TimeAllocated);
 			state.State = States.Done;
+        }
 
-			if (state.ShowTime)
-				Console.WriteLine("Total elapsed time: " + state.StopWatch.Elapsed.Seconds);
-		}
-
-
+        private static void state_OnAttackCompleted(object sender, AttackCompletedEventArgs e)
+        {
+            if (state.ShowTime)
+                Console.WriteLine("Total elapsed time: " + state.StopWatch.Elapsed.Seconds);
+            Environment.Exit(0);
+        }
 	}
 }
