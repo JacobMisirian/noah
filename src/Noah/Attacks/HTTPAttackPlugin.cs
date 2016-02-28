@@ -29,7 +29,7 @@ namespace Noah.Attacks
 
         public void BeginAttack()
         {
-            new Task(() => attack()).Start();
+            new Thread(() => attack()).Start();
         }
 
         private void attack()
