@@ -43,6 +43,8 @@ namespace Noah.Attacks
             {
                 using (Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
                 {
+
+                    sock.NoDelay = true;
                     sock.Connect(ip, port);
                     sock.Send(bytes, SocketFlags.None);
                 }
