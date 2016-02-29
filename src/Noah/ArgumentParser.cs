@@ -124,7 +124,7 @@ namespace Noah
             Console.WriteLine("-d --delay [Milliseconds]\tDelay between attack ticks.");
             Console.WriteLine("-f --show-flood\tShows the flood count at the end of execution.");
             Console.WriteLine("-h --help\tDisplays this help and exits.");
-            Console.WriteLine("-l --time-limit [Limit]\tLimit time of attack in seconds.");
+            Console.WriteLine("-l --time-limit [Seconds]\tLimit time of attack in seconds.");
             Console.WriteLine("-m --message [Path]\tChanges the message sent from a default random string to the text in file [Path].");
             Console.WriteLine("-n --host-name [Host]\tSets the hostname to attack. Default 127.0.0.1.");
             Console.WriteLine("-p --port [Port]\tChanges the port from the default 80.");
