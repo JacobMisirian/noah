@@ -22,7 +22,6 @@ namespace Noah
             State = States.Ready;
             Port = 80;
             Delay = 0;
-            Message = randomString(20);
             TimeAllocated = Timeout.Infinite;
             Threads = 1;
             ShowTime = false;
@@ -46,14 +45,14 @@ namespace Noah
             }
         }
 
-        private string randomString(int length)
+     /*   private string randomString(int length)
         {
             Random random = new Random();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < length; i++)
                 sb.Append((char)random.Next(48, 122));
             return sb.ToString();
-        }
+        } */
 
         public event EventHandler<AttackCompletedEventArgs> AttackCompleted;
         protected virtual void OnAttackCompleted(AttackCompletedEventArgs e)
