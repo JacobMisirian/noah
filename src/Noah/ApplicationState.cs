@@ -15,6 +15,11 @@ namespace Noah
         /// </summary>
         public States State { get; set; }
         /// <summary>
+        /// The attack method to use.
+        /// </summary>
+        /// <value>The attack.</value>
+        public string Attack { get; set; }
+        /// <summary>
         /// The IP to attack.
         /// </summary>
         public string IP { get; set; }
@@ -60,6 +65,8 @@ namespace Noah
         public ApplicationState()
         {
             State = States.Ready;
+            Attack = "tcp";
+            IP = "127.0.0.1";
             Port = 80;
             Delay = 0;
             FloodCount = 0;

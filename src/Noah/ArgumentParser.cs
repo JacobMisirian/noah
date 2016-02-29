@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 
 namespace Noah
 {
@@ -35,6 +36,10 @@ namespace Noah
                 {
                     switch (args[position].ToLower())
                     {
+                        case "-a":
+                        case "--attack-type":
+                            state.Attack = expectData("Attack Type");
+                            break;
                         case "-d":
                         case "--delay":
                             state.Delay = Convert.ToInt32(expectData("Delay"));
@@ -54,6 +59,25 @@ namespace Noah
                         case "-m":
                         case "--message":
                             state.Message = File.ReadAllText(expectData("Path"));
+                            break;
+                        case "-n":
+                        case "--host-name":
+                            string data = expectData("Host name");
+                            try
+                            {
+                                state.IP = IPAddress.Parse(data).ToString();
+                            }
+                            catch
+                            {
+                                try
+                                {
+                                    state.IP = Dns.GetHostAddresses(data)[0].ToString();
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Entry is not an IP nor valid hostname.");
+                                }
+                            }
                             break;
                         case "-p":
                         case "--port":
@@ -95,11 +119,13 @@ namespace Noah
             Console.WriteLine("Attacks:");
             Console.WriteLine("Tcp\tUdp");
             Console.WriteLine("Options:");
+            Console.WriteLine("-a --attack-type [Protocol]\tSets the attack mode to Tcp or Udp. Default Tcp.");
             Console.WriteLine("-d --delay [Milliseconds]\tDelay between attack ticks.");
             Console.WriteLine("-f --show-flood\tShows the flood count at the end of execution.");
             Console.WriteLine("-h --help\tDisplays this help and exits.");
             Console.WriteLine("-l --time-limit [Limit]\tLimit time of attack in seconds.");
             Console.WriteLine("-m --message [Path]\tChanges the message sent from a default random string to the text in file [Path].");
+            Console.WriteLine("-m --host-name [Host]\tSets the hostname to attack. Default 127.0.0.1.");
             Console.WriteLine("-p --port [Port]\tChanges the port from the default 80.");
             Console.WriteLine("-s --show-time\tDisplays the total time and tick per second.");
             Console.WriteLine("-t --threads [ThreadLimit]\tSets the amount of threads used on the attack. Default 1.");
