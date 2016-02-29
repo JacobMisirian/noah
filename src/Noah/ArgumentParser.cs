@@ -75,7 +75,7 @@ namespace Noah
                                 }
                                 catch
                                 {
-                                    Console.WriteLine("Entry is not an IP nor valid hostname.");
+                                    die("Entry is not an IP nor valid hostname.");
                                 }
                             }
                             break;
@@ -95,19 +95,20 @@ namespace Noah
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    Console.WriteLine("Index was out of range!");
+                    die("Index was out of range!");
+
                 }
                 catch (IOException)
                 {
-                    Console.WriteLine("File not found!");
+                    die("File not found!");
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Int was not in correct format!");
+                    die("Int was not in correct format!");
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Something went wrong!");
+                    die("Something went wrong!");
                 }
             }
             return state;
@@ -136,9 +137,14 @@ namespace Noah
         {
             if (!args[++position].ToLower().StartsWith("-"))
                 return args[position];
-            Console.WriteLine("Expected " + expectedType + " after " + args[position - 1]);
-            Environment.Exit(0);
+            die("Expected " + expectedType + " after " + args[position - 1]);
             return "";
+        }
+
+        private void die(string message)
+        {
+            Console.WriteLine(message);
+            Environment.Exit(0);
         }
     }
 }
