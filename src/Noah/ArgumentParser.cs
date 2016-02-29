@@ -34,6 +34,10 @@ namespace Noah
                     case "--time-limit":
                         state.TimeAllocated = Convert.ToInt32(expectData("Time limit in seconds")) * 1000;
                         break;
+                    case "-p":
+                    case "--port":
+                        state.Port = Convert.ToInt32(expectData("Port"));
+                        break;
                     case "-s":
                     case "--show-time":
                         state.ShowTime = true;
@@ -56,6 +60,7 @@ namespace Noah
             Console.WriteLine("-d --delay [Milliseconds]\tDelay between attack ticks.");
             Console.WriteLine("-h --help\tDisplays this help and exits.");
             Console.WriteLine("-l --time-limit [LIMIT]\tLimit time of attack in seconds.");
+            Console.WriteLine("-p --port [Port]\tChanges the port from the default 80.");
             Console.WriteLine("-s --show-time\tDisplays the total time and tick per second.");
             Console.WriteLine("-t --threads [ThreadLimit]\tSets the amount of threads used on the attack. Default 1.");
             Environment.Exit(0);

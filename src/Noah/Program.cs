@@ -5,26 +5,29 @@ using Noah.Attacks;
 
 namespace Noah
 {
-	class MainClass
-	{
+    class MainClass
+    {
         private static ApplicationState state;
-		public static void Main(string[] args)
-        {	
+        public static void Main(string[] args)
+        {
             state = new ArgumentParser(args).Parse();
             state.AttackCompleted += state_OnAttackCompleted;
             IAttack attack = null;
 
-			switch (args[0].ToLower())
-			{
-				case "tcp":
-					attack = new HTTPAttack(args[1], state);
-					break;
-			}
+            switch (args[0].ToLower())
+            {
+                case "tcp":
+                    attack = new HTTPAttack(state, args[1], state.Port);
+                    break;
+                case "udp":
+                    attack = new UDPAttack(state, args[1], state.Port);
+                    break;
+            }
 
             for (int i = 0; i < state.Threads; i++)
                 attack.BeginAttack();
-			Thread.Sleep(state.TimeAllocated);
-			state.State = States.Done;
+            Thread.Sleep(state.TimeAllocated);
+            state.State = States.Done;
         }
 
         private static void state_OnAttackCompleted(object sender, AttackCompletedEventArgs e)
@@ -33,5 +36,5 @@ namespace Noah
                 Console.WriteLine("Total elapsed time: " + state.StopWatch.Elapsed.Seconds);
             Environment.Exit(0);
         }
-	}
+    }
 }

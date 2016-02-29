@@ -7,6 +7,8 @@ namespace Noah
     public class ApplicationState
     {
         public States State { get; set; }
+        public string IP { get; set; }
+        public int Port { get; set; }
         public int Delay { get; set; }
         public int TimeAllocated { get; set; }
         public int Threads { get; set; }
@@ -16,6 +18,7 @@ namespace Noah
         public ApplicationState()
         {
             State = States.Ready;
+            Port = 80;
             Delay = 0;
             TimeAllocated = Timeout.Infinite;
             Threads = 1;
