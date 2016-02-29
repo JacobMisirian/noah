@@ -3,15 +3,25 @@ using System.IO;
 
 namespace Noah
 {
+    /// <summary>
+    /// Class for parsing the command line options.
+    /// </summary>
     public class ArgumentParser
     {
         private int position;
         private string[] args;
+        /// <summary>
+        /// Initializes an argument parser.
+        /// </summary>
+        /// <param name="args">The array to parse.</param>
         public ArgumentParser(string[] args)
         {
             this.args = args;
         }
-
+        /// <summary>
+        /// Parses the arguments and returns an ApplicationState.
+        /// </summary>
+        /// <returns></returns>
         public ApplicationState Parse()
         {
             if (args.Length <= 0)

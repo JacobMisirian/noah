@@ -22,6 +22,10 @@ namespace Noah
                 case "udp":
                     attack = new UDPAttack(state, args[1], state.Port);
                     break;
+                default:
+                    Console.WriteLine("Unknown protocol: " + args[0]);
+                    Environment.Exit(0);
+                    break;
             }
 
             for (int i = 0; i < state.Threads; i++)
