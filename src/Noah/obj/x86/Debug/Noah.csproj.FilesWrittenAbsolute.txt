@@ -8,3 +8,9 @@
 /root/noah/src/Noah/bin/Debug/Noah.exe
 /root/noah/src/Noah/obj/x86/Debug/Noah.exe
 /root/noah/src/Noah/obj/x86/Debug/Noah.exe.mdb
+/home/reagan/noah/src/Noah/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/reagan/noah/src/Noah/bin/Debug/Noah.exe.mdb
+/home/reagan/noah/src/Noah/bin/Debug/Noah.exe
+/home/reagan/noah/src/Noah/obj/x86/Debug/Noah.exe
+/home/reagan/noah/src/Noah/obj/x86/Debug/Noah.exe.mdb
+/home/reagan/noah/src/Noah/bin/Debug/JRCLib.exe
