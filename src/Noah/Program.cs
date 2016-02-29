@@ -34,6 +34,8 @@ namespace Noah
         {
             if (state.ShowTime)
                 Console.WriteLine("Total elapsed time: " + state.StopWatch.Elapsed.Seconds);
+            if (state.ShowFlood)
+                Console.WriteLine("Total flood count: " + state.FloodCount.ToString());
             Environment.Exit(0);
         }
     }

@@ -11,10 +11,12 @@ namespace Noah
         public string IP { get; set; }
         public int Port { get; set; }
         public int Delay { get; set; }
+        public long FloodCount { get; set; }
         public int TimeAllocated { get; set; }
         public string Message { get; set; }
         public int Threads { get; set; }
         public bool ShowTime { get; set; }
+        public bool ShowFlood { get; set; }
         public Stopwatch StopWatch { get; private set; }
 
         public ApplicationState()
@@ -22,9 +24,11 @@ namespace Noah
             State = States.Ready;
             Port = 80;
             Delay = 0;
+            FloodCount = 0;
             TimeAllocated = Timeout.Infinite;
             Threads = 1;
             ShowTime = false;
+            ShowFlood = false;
             StopWatch = new Stopwatch();
             StopWatch.Start();
 

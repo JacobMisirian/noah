@@ -49,6 +49,7 @@ namespace Noah.Attacks
                     sock.Send(bytes, SocketFlags.None);
                 }
                 Thread.Sleep(state.Delay);
+                state.FloodCount++;
             }
         }
     }

@@ -29,6 +29,10 @@ namespace Noah
                         case "--delay":
                             state.Delay = Convert.ToInt32(expectData("Delay"));
                             break;
+                        case "-f":
+                        case "--show-flood":
+                            state.ShowFlood = true;
+                            break;
                         case "-h":
                         case "--help":
                             displayHelp();
@@ -82,6 +86,7 @@ namespace Noah
             Console.WriteLine("Tcp\tUdp");
             Console.WriteLine("Options:");
             Console.WriteLine("-d --delay [Milliseconds]\tDelay between attack ticks.");
+            Console.WriteLine("-f --show-flood\tShows the flood count at the end of execution.");
             Console.WriteLine("-h --help\tDisplays this help and exits.");
             Console.WriteLine("-l --time-limit [Limit]\tLimit time of attack in seconds.");
             Console.WriteLine("-m --message [Path]\tChanges the message sent from a default random string to the text in file [Path].");

