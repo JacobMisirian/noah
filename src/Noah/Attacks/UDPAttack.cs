@@ -38,9 +38,8 @@ namespace Noah.Attacks
 
             while (state.State != States.Done)
             {
-                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                sock.SendTo(bytes, endPoint);
-
+                using (Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp))
+                    sock.SendTo(bytes, endPoint);
                 Thread.Sleep(state.Delay);
             }
         }

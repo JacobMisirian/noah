@@ -41,10 +41,11 @@ namespace Noah.Attacks
 
             while (state.State != States.Done)
             {
-                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                sock.Connect(ip, port);
-                sock.Send(bytes, SocketFlags.None);
-
+                using (Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+                {
+                    sock.Connect(ip, port);
+                    sock.Send(bytes, SocketFlags.None);
+                }
                 Thread.Sleep(state.Delay);
             }
         }
