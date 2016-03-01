@@ -120,7 +120,7 @@ namespace Noah
             Console.WriteLine("Attacks:");
             Console.WriteLine("Tcp\tUdp");
             Console.WriteLine("Options:");
-            Console.WriteLine("-a --attack-type [Protocol]\tSets the attack mode to Tcp or Udp. Default Tcp.");
+            Console.WriteLine("-a --attack-type [Protocol]\tSets the attack mode to Tcp, Udp, or Icmp. Default Tcp.");
             Console.WriteLine("-d --delay [Milliseconds]\tDelay between attack ticks.");
             Console.WriteLine("-f --show-flood\tShows the flood count at the end of execution.");
             Console.WriteLine("-h --help\tDisplays this help and exits.");

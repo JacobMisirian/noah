@@ -5,3 +5,8 @@ C:\Users\misiriaj\Noah\src\Noah\obj\x86\Debug\Noah.csprojResolveAssemblyReferenc
 C:\Users\misiriaj\Noah\src\Noah\obj\x86\Debug\Noah.pdb
 C:\Users\misiriaj\Noah\src\Noah\bin\Debug\JRCLib.exe
 C:\Users\misiriaj\Noah\src\Noah\bin\Debug\JRCLib.pdb
+C:\Users\Reagan\noah\src\Noah\obj\x86\Debug\Noah.exe
+C:\Users\Reagan\noah\src\Noah\obj\x86\Debug\Noah.pdb
+C:\Users\Reagan\noah\src\Noah\bin\Debug\Noah.exe
+C:\Users\Reagan\noah\src\Noah\bin\Debug\Noah.pdb
+C:\Users\Reagan\noah\src\Noah\obj\x86\Debug\Noah.csprojResolveAssemblyReference.cache

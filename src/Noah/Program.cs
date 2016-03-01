@@ -28,6 +28,9 @@ namespace Noah
                 case "udp":
                     attack = new UDPAttack(state, state.IP, state.Port);
                     break;
+                case "icmp":
+                    attack = new ICMPAttack(state, state.IP);
+                    break;
                 default:
                     Console.WriteLine("Unknown protocol name " + state.Attack);
                     Environment.Exit(0);
