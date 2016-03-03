@@ -47,7 +47,8 @@ namespace Noah.Attacks
             while (state.State != States.Done)
             {
                 // Send the ping.
-                new Ping().Send(ip);
+                using (Ping ping = new Ping())
+                    ping.Send(ip);
                 // Sleep between ticks.
                 Thread.Sleep(state.Delay);
                 // Increment the flood count.
